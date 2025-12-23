@@ -959,9 +959,9 @@ class MainWindow(QWidget):
         self.btn_check.setEnabled(False)
         self.btn_check.setText('Checking...')
         
-        worker = CookieValidatorWorker(cookie_text)
-        worker.result.connect(self.on_cookie_checked)
-        worker.start()
+        self.cookie_worker = CookieValidatorWorker(cookie_text)
+        self.cookie_worker.result.connect(self.on_cookie_checked)
+        self.cookie_worker.start()
     
     def on_cookie_checked(self, success, token, exp):
         """Handle cookie validation result"""
